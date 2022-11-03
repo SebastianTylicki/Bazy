@@ -1,0 +1,15 @@
+CREATE TABLE statek(nazwa_statku VARCHAR(40) PRIMARY KEY, rodzaj_statku ENUM('1','2','3'), data_wodowanie DATE, max_ladownosc DECIMAL(20,2) UNSIGNED);CREATE TABLE statek(nazwa_statku VARCHAR(40) PRIMARY KEY, rodzaj_statku ENUM('1','2','3'), data_wodowanie DATE, max_ladownosc DECIMAL(20,2) UNSIGNED);
+desc statek;
+SHOW DATABASES;
+SELECT * FROM postac;
+INSERT INTO postac(nazwa,rodzaj,data_ur,wiek) VALUES('wiking5','wiking','1330-01-01','50');
+CREATE TABLE przetwory(id_przetworu INT PRIMARY KEY, rok_produkcji YEAR(4) DEFAULT 1999, id_wykonawcy INT, FOREIGN KEY(id_wykonawcy) REFERENCES postac(id_postaci), zawartosc VARCHAR(40), dodatek VARCHAR(40) DEFAULT 'chili', id_konsumenta INT, FOREIGN KEY(id_konsumenta) REFERENCES postac(id_postaci));
+INSERT INTO izba(adres_budynku,nazwa_izby,metraz) VALUES('123','spizarnia','10');
+ALTER TABLE izba ADD kolor_izby VARCHAR(40) DEFAULT 'czarny' AFTER metraz;
+CREATE TABLE izba(adres_budynku INT, nazwa_izby VARCHAR(40), PRIMARY KEY(adres_budynku,nazwa_izby), metraz INT
+UNSIGNED, wlascicel INT, FOREIGN KEY(wlascicel) REFERENCES postac(id_postaci) ON DELETE SET NULL );
+INSERT INTO walizka(pojemnosc) VALUES('40');
+ALTER TABLE walizka MODIFY kolor ENUM('rozowy','czerwony','teczowy','zolty') DEFAULT 'rozowy';
+CREATE TABLE walizka(id_walizki INT PRIMARY KEY auto_increment, pojemnosc INT UNSIGNED, kolor ENUM('rozowy','czerwony','teczowy','zolty'), id_wlasciciela INT, FOREIGN KEY(id_wlasciciela) REFERENCES postac(id_postaci) ON DELETE CASCADE );
+INSERT INTO postac(nazwa,rodzaj,data_ur,wiek) VALUES('Tesciowa','kobieta','1300-01-01','88');
+CREATE TABLE postac (id_postaci INT PRIMARY KEY auto_increment, nazwa VARCHAR(40), rodzaj ENUM('wiking','ptak','kobieta'), data_ur DATE, wiek INT UNSIGNED);
