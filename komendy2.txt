@@ -1,0 +1,10 @@
+ALTER TABLE postac MODIFY id_postaci INT;
+ALTER TABLE postac DROP PRIMARY KEY;
+mysql> ALTER TABLE postac ADD pesel VARCHAR(11)PRIMARY KEY;
+ALTER TABLE postac DROP FOREIGN KEY postac_ibfk_1;
+SHOW CREATE TABLE postac;
+DELETE FROM postac WHERE nazwa='wiking5';
+DROP TABLE izba;
+DELETE FROM izba WHERE nazwa_izby='spizarnia';
+UPDATE postac SET nazwa_statku='nazwa2' WHERE nazwa='wiking5';
+ALTER TABLE postac ADD FOREIGN KEY(nazwa_statku) REFERENCES statek(nazwa_statku);
