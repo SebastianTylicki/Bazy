@@ -1,0 +1,7 @@
+UPDATE statek SET max_ladownosc= 0.7 * max_ladownosc WHERE data_wodowania>1900-01-01 ;
+INSERT INTO zwierz(nazwa,wiek) VALUES('Drozd','20');
+UPDATE marynarz SET nazwa_statku=NULL;
+INSERT INTO marynarz(id_postaci,nazwa,rodzaj,data_ur,wiek,funkcja,nazwa_statku,pesel) VALUES('7','wiking4','wiking','1340-01-01','40',NULL,'nazwa2','71245674952');
+UPDATE postac SET pesel='11245674952' WHERE id_postaci=5;
+ALTER TABLE postac MODIFY rodzak ENUM('wiking','ptak','kobieta','syrena');
+
